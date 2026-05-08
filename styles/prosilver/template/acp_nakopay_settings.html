@@ -1,0 +1,52 @@
+<!-- NakoPay ACP settings template -->
+<!-- @package nakopay/phpbb-extension -->
+
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_NAKOPAY_TITLE}</h1>
+
+<p>{L_ACP_NAKOPAY_VERSION}: <strong>{NAKOPAY_VERSION}</strong></p>
+
+<form id="acp_nakopay" method="post" action="{U_ACTION}">
+    {s_hidden_fields}
+    <fieldset>
+        <legend>{L_ACP_NAKOPAY_SETTINGS}</legend>
+
+        <dl>
+            <dt><label for="nakopay_api_key">{L_ACP_NAKOPAY_API_KEY}</label>
+                <br /><span>{L_ACP_NAKOPAY_API_KEY_DESC}</span>
+                <br /><span><a href="https://nakopay.com/dashboard/api-keys" target="_blank">Get an API key</a></span>
+            </dt>
+            <dd><input type="password" id="nakopay_api_key" name="nakopay_api_key" value="{NAKOPAY_API_KEY}" size="60" /></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="nakopay_webhook_secret">{L_ACP_NAKOPAY_WEBHOOK_SECRET}</label>
+                <br /><span>{L_ACP_NAKOPAY_WEBHOOK_DESC}</span>
+            </dt>
+            <dd><input type="password" id="nakopay_webhook_secret" name="nakopay_webhook_secret" value="{NAKOPAY_WEBHOOK_SECRET}" size="60" /></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="nakopay_currency">{L_ACP_NAKOPAY_CURRENCY}</label>
+                <br /><span>{L_ACP_NAKOPAY_CURRENCY_DESC}</span>
+            </dt>
+            <dd><input type="text" id="nakopay_currency" name="nakopay_currency" value="{NAKOPAY_CURRENCY}" size="8" /></dd>
+        </dl>
+
+        <dl>
+            <dt><label for="nakopay_test_mode">{L_ACP_NAKOPAY_TEST_MODE}</label>
+                <br /><span>{L_ACP_NAKOPAY_TEST_MODE_DESC}</span>
+            </dt>
+            <dd><label><input type="radio" name="nakopay_test_mode" value="1"<!-- IF NAKOPAY_TEST_MODE --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+                <label><input type="radio" name="nakopay_test_mode" value="0"<!-- IF not NAKOPAY_TEST_MODE --> checked="checked"<!-- ENDIF --> /> {L_NO}</label></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset class="submit-buttons">
+        <input type="submit" name="submit" value="{L_SUBMIT}" class="button1" />
+        <input type="reset" value="{L_RESET}" class="button2" />
+    </fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

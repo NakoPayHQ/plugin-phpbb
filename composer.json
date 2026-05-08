@@ -1,0 +1,23 @@
+{
+    "name": "nakopay/phpbb-extension",
+    "type": "phpbb-extension",
+    "description": "Accept Bitcoin payments on your phpBB forum via NakoPay - paid memberships, donations, premium group access.",
+    "homepage": "https://nakopay.com/integrations",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "NakoPay",
+            "email": "support@nakopay.com",
+            "homepage": "https://nakopay.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    },
+    "extra": {
+        "display-name": "NakoPay Bitcoin Payments",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.3.0"
+        }
+    }
+}

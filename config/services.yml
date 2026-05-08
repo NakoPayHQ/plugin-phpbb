@@ -1,0 +1,44 @@
+services:
+    nakopay.btcpay.client:
+        class: nakopay\btcpay\core\client
+        arguments:
+            - '@config'
+
+    nakopay.btcpay.listener:
+        class: nakopay\btcpay\event\listener
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@nakopay.btcpay.client'
+        tags:
+            - { name: event.listener }
+
+    nakopay.btcpay.admin_controller:
+        class: nakopay\btcpay\controller\admin_controller
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@language'
+            - '@nakopay.btcpay.client'
+
+    nakopay.btcpay.webhook_controller:
+        class: nakopay\btcpay\controller\webhook_controller
+        arguments:
+            - '@config'
+            - '@request'
+            - '@dbal.conn'
+            - '@nakopay.btcpay.client'
+
+    nakopay.btcpay.payment_controller:
+        class: nakopay\btcpay\controller\payment_controller
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@nakopay.btcpay.client'
