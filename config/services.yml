@@ -1,0 +1,44 @@
+services:
+    nakopay.payments.client:
+        class: nakopay\payments\core\client
+        arguments:
+            - '@config'
+
+    nakopay.payments.listener:
+        class: nakopay\payments\event\listener
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@nakopay.payments.client'
+        tags:
+            - { name: event.listener }
+
+    nakopay.payments.admin_controller:
+        class: nakopay\payments\controller\admin_controller
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@language'
+            - '@nakopay.payments.client'
+
+    nakopay.payments.webhook_controller:
+        class: nakopay\payments\controller\webhook_controller
+        arguments:
+            - '@config'
+            - '@request'
+            - '@dbal.conn'
+            - '@nakopay.payments.client'
+
+    nakopay.payments.payment_controller:
+        class: nakopay\payments\controller\payment_controller
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@nakopay.payments.client'

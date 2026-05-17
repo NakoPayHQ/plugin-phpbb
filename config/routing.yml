@@ -1,0 +1,18 @@
+nakopay_webhook:
+    path: /nakopay/webhook
+    defaults:
+        _controller: nakopay.payments.webhook_controller:handle
+    methods: [POST]
+
+nakopay_payment:
+    path: /nakopay/pay
+    defaults:
+        _controller: nakopay.payments.payment_controller:handle
+
+nakopay_poll:
+    path: /nakopay/poll/{invoice_id}
+    defaults:
+        _controller: nakopay.payments.payment_controller:poll
+    methods: [GET]
+    requirements:
+        invoice_id: '[a-zA-Z0-9_]+'
